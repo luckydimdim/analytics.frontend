@@ -8,6 +8,7 @@ import 'package:angular2/src/platform/browser/location/hash_location_strategy.da
 import 'package:angular2/platform/common.dart';
 
 import 'package:alert/alert_service.dart';
+import 'package:resources_loader/resources_loader.dart';
 
 import 'package:analytics/analytics_component.dart';
 
@@ -23,7 +24,8 @@ main() async {
   ComponentRef ref = await bootstrap(AnalyticsComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
-    const Provider(AlertService)
+    const Provider(AlertService),
+    const Provider(ResourcesLoaderService, useClass: ResourcesLoaderService)
   ]);
 
   if (isDebug) {
