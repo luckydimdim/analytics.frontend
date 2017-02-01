@@ -38,6 +38,9 @@ class AnalyticsComponent implements OnInit {
 
   @override
   void ngOnInit() {
+
+    breadcrumbInit();
+
     _resourcesLoaderService.loadScript('vendor/chart.js/dist/', 'Chart.min.js', false);
     _resourcesLoaderService.loadScript('packages/analytics/src/', 'init-analytics.js', false);
   }
