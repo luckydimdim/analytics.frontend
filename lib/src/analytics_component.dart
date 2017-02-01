@@ -24,6 +24,18 @@ class AnalyticsComponent implements OnInit {
 
   AnalyticsComponent(this._router, this._alertService, this._resourcesLoaderService) {}
 
+  void breadcrumbInit(){
+    var  breadcrumbContent = querySelector('#breadcrumbContent') as DivElement;
+
+    if (breadcrumbContent == null)
+      return;
+
+    breadcrumbContent.innerHtml = '''
+            <li class="breadcrumb-item"><a href="#/master/dashboard">Главная</a></li>
+            <li class="breadcrumb-item active">Аналитика</li>
+    ''';
+  }
+
   @override
   void ngOnInit() {
     _resourcesLoaderService.loadScript('vendor/chart.js/dist/', 'Chart.min.js', false);
