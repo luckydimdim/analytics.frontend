@@ -1,57 +1,71 @@
 <div class="animated fadeIn">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-5">
+			<div class="card">
+				<div class="card-block p-1 clearfix">
+					<i class="fa fa-bar-chart bg-primary p-1 font-2xl mr-1 float-xs-left"></i>
+					<a href="#" class="h5 text-primary mb-0 mt-h">Сравнение платежных бюджетов</a>
+					<div class="text-muted text-uppercase font-weight-bold font-xs">Описание раздела</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-block p-1 clearfix">
+					<i class="fa fa-bar-chart bg-primary p-1 font-2xl mr-1 float-xs-left"></i>
+					<a href="#" class="h5 text-primary mb-0 mt-h">Сравнение бюджетов</a>
+					<div class="text-muted text-uppercase font-weight-bold font-xs">Описание раздела</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-block p-1 clearfix">
+					<i class="fa fa-bar-chart bg-primary p-1 font-2xl mr-1 float-xs-left"></i>
+					<a href="#" class="h5 text-primary mb-0 mt-h">Аналитика по титульному списку</a>
+					<div class="text-muted text-uppercase font-weight-bold font-xs">Описание раздела</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-block p-1 clearfix">
+					<i class="fa fa-bar-chart bg-primary p-1 font-2xl mr-1 float-xs-left"></i>
+					<a href="#" class="h5 text-primary mb-0 mt-h">Аналитика по бюджету</a>
+					<div class="text-muted text-uppercase font-weight-bold font-xs">Описание раздела</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-block p-1 clearfix">
+					<i class="fa fa-cog bg-primary p-1 font-2xl mr-1 float-xs-left"></i>
+					<a href="#" class="h5 text-primary mb-0 mt-h">Конструктор отчетов</a>
+					<div class="text-muted text-uppercase font-weight-bold font-xs">Создание отчетов в свободной форме
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7">
 			<div class="card">
 				<div class="card-header">
-					Аналитика					
+					План / факт анализ по объекту &laquo;Мор. порт&raquo;
+					<div class="card-actions">
+						<a href="#">
+							<i class="icon-magnifier"></i>
+						</a>
+					</div>
 				</div>
 				<div class="card-block">
-					<div class="card-columns col-2">
-						<div class="card">
-							<div class="card-header">
-								План / факт анализ по объекту &laquo;Мор. порт&raquo;
-									<div class="card-actions">
-										<a href="#">
-											<i class="icon-magnifier"></i>
-										</a>
-									</div>
-							</div>
-							<div class="card-block">
-								<div class="chart-wrapper">
-									<canvas id="canvas-1"></canvas>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								Сравнение бюджетов по объекту &laquo;Резервуары хранения конденсата&raquo;
-								<div class="card-actions">
-									<a href="#">
-										<i class="icon-magnifier"></i>
-									</a>
-								</div>
-							</div>
-							<div class="card-block">
-								<div class="chart-wrapper">
-									<canvas id="canvas-2"></canvas>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								Анализ капитальных затрат на 2016 год
-								<div class="card-actions">
-									<a href="#">
-										<i class="icon-magnifier"></i>
-									</a>
-								</div>
-							</div>
-							<div class="card-block">
-								<div class="chart-wrapper">
-									<canvas id="canvas-4"></canvas>
-								</div>
-							</div>
-						</div>
+					<div class="chart-wrapper">
+						<canvas id="canvas-1"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					Сравнение бюджетов по объекту &laquo;Резервуары хранения конденсата&raquo;
+					<div class="card-actions">
+						<a href="#">
+							<i class="icon-magnifier"></i>
+						</a>
+					</div>
+				</div>
+				<div class="card-block">
+					<div class="chart-wrapper">
+						<canvas id="canvas-2"></canvas>
 					</div>
 				</div>
 			</div>
