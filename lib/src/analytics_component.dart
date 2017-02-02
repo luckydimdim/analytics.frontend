@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 import 'dart:html';
@@ -37,52 +38,112 @@ class AnalyticsComponent implements OnInit {
   }
 
   @override
-  void ngOnInit() {
+  Future ngOnInit() async {
 
     breadcrumbInit();
 
-    _resourcesLoaderService.loadScript('vendor/chart.js/dist/', 'Chart.min.js', false);
-    _resourcesLoaderService.loadScript('packages/analytics/src/', 'init-analytics.js', false);
+    await _resourcesLoaderService.loadScriptAsync('vendor/chart.js/dist/', 'Chart.min.js', false);
+
+    initChart1();
+    initChart2();
+
   }
 
-
-  /**
-   *     var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-      var lineChartData = {
-      labels : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль'],
-      datasets : [
-      {
-      label: 'План 2016',
-      backgroundColor : 'rgba(220,220,220,0.2)',
-      borderColor : 'rgba(220,220,220,1)',
-      pointBackgroundColor : 'rgba(220,220,220,1)',
-      pointBorderColor : '#fff',
-      data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      },
-      {
-      label: 'Факт 2016',
-      backgroundColor : 'rgba(151,187,205,0.2)',
-      borderColor : 'rgba(151,187,205,1)',
-      pointBackgroundColor : 'rgba(151,187,205,1)',
-      pointBorderColor : '#fff',
-      data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-      }
-      ]
-      }
-
-      var ctx = document.getElementById('canvas-1');
-      var chart = new Chart(ctx, {
-      type: 'line',
-      data: lineChartData,
-      options: {
-      responsive: true
-      }
-      });
-   */
-  /
   void initChart1(){
 
+    var data1 = <int>[
+      28,
+      58,
+      38,
+      98,
+      39,
+      65,
+      98
+    ];
+
+    var data2 = <int>[
+      33,
+      38,
+      32,
+      61,
+      17,
+      15,
+      37
+    ];
+
+    var data = new LinearChartData(labels: <String>['Январь','Февраль','Март','Апрель','Май','Июнь','Июль'],
+        datasets: <ChartDataSets>[
+      new ChartDataSets(
+          label: 'План 2016',
+          backgroundColor: 'rgba(220,220,220,0.2)',
+          borderColor : 'rgba(220,220,220,1)',
+          pointBackgroundColor : 'rgba(220,220,220,1)',
+          pointBorderColor : '#fff',
+          data: data1),
+      new ChartDataSets(
+          label: 'Факт 2016',
+          backgroundColor : 'rgba(151,187,205,0.2)',
+          borderColor : 'rgba(151,187,205,1)',
+          pointBackgroundColor : 'rgba(151,187,205,1)',
+          pointBorderColor : '#fff',
+          data: data2)
+    ]);
+
+    var chartOptions = new ChartOptions(
+        responsive: true);
+
+    var config =
+    new ChartConfiguration(type: 'line', data: data, options: chartOptions);
 
     new Chart(querySelector('#canvas-1') as CanvasElement, config);
+  }
+
+  void initChart2(){
+
+    var data1 = <int>[
+      12,
+      86,
+      13,
+      72,
+      22,
+      63,
+      30
+    ];
+
+    var data2 = <int>[
+      43,
+      74,
+      93,
+      85,
+      66,
+      36,
+      79
+    ];
+
+    var data = new LinearChartData(labels: <String>['Январь','Февраль','Март','Апрель','Май','Июнь','Июль'],
+        datasets: <ChartDataSets>[
+          new ChartDataSets(
+              label: '2015',
+              backgroundColor : 'rgba(220,220,220,0.5)',
+              borderColor : 'rgba(220,220,220,0.8)',
+              pointBackgroundColor : 'rgba(220,220,220,1)',
+              pointBorderColor : '#fff',
+              data: data1),
+          new ChartDataSets(
+              label: '2016',
+              backgroundColor : 'rgba(151,187,205,0.5)',
+              borderColor : 'rgba(151,187,205,0.8)',
+              pointBackgroundColor : 'rgba(151,187,205,1)',
+              pointBorderColor : '#fff',
+              data: data2)
+        ]);
+
+    var chartOptions = new ChartOptions(
+        responsive: true);
+
+    var config =
+    new ChartConfiguration(type: 'bar', data: data, options: chartOptions);
+
+    new Chart(querySelector('#canvas-2') as CanvasElement, config);
   }
 }
