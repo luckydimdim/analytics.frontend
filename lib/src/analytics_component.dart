@@ -2,28 +2,25 @@ import 'dart:async';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 import 'dart:html';
-import 'package:alert/alert_service.dart';
-import 'package:js/js.dart';
-
 import 'package:resources_loader/resources_loader.dart';
 import 'package:chartjs/chartjs.dart';
+import 'package:master_layout/master_layout_component.dart';
+
 @Component(selector: 'analytics')
 @View(
     templateUrl: 'analytics_component.html',
-    directives: const [RouterLink])
+    directives: const [RouterLink, MasterLayoutComponent])
 class AnalyticsComponent implements OnInit {
-  static const String route_name = "Analytics";
-  static const String route_path = "analytics";
+  static const String route_name = 'Analytics';
+  static const String route_path = 'analytics';
   static const Route route = const Route(
       path: AnalyticsComponent.route_path,
       component: AnalyticsComponent,
       name: AnalyticsComponent.route_name);
 
-  final Router _router;
-  final AlertService _alertService;
   final ResourcesLoaderService _resourcesLoaderService;
 
-  AnalyticsComponent(this._router, this._alertService, this._resourcesLoaderService) {}
+  AnalyticsComponent(this._resourcesLoaderService) {}
 
   void breadcrumbInit(){
     var  breadcrumbContent = querySelector('#breadcrumbContent') as DivElement;
@@ -42,7 +39,7 @@ class AnalyticsComponent implements OnInit {
 
     breadcrumbInit();
 
-    await _resourcesLoaderService.loadScriptAsync('vendor/chart.js/dist/', 'Chart.min.js', false);
+    await _resourcesLoaderService.loadScriptAsync('packages/analytics/src/bower_components/chart.js/dist/', 'Chart.min.js', false);
 
     initChart1();
     initChart2();
@@ -142,7 +139,7 @@ class AnalyticsComponent implements OnInit {
         responsive: true);
 
     var config =
-    new ChartConfiguration(type: 'bar', data: data, options: chartOptions);
+      new ChartConfiguration(type: 'bar', data: data, options: chartOptions);
 
     new Chart(querySelector('#canvas-2') as CanvasElement, config);
   }
