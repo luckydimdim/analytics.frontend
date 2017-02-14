@@ -9,6 +9,7 @@ import 'package:angular2/platform/common.dart';
 
 import 'package:alert/alert_service.dart';
 import 'package:resources_loader/resources_loader.dart';
+import 'package:master_layout/master_layout_component.dart';
 
 import 'package:analytics/analytics_component.dart';
 
@@ -16,17 +17,22 @@ bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
 
+@Component(selector: 'app')
+@View(
+  template: '<master-layout><analytics></analytics></master-layout>',
+  directives: const [MasterLayoutComponent, AnalyticsComponent])
+class AppComponent {}
+
 main() async {
   if (isDebug) {
     reflector.trackUsage();
   }
 
-  ComponentRef ref = await bootstrap(AnalyticsComponent, [
+  ComponentRef ref = await bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(AlertService),
-    const Provider(ResourcesLoaderService, useClass: ResourcesLoaderService)
-  ]);
+    const Provider(ResourcesLoaderService, useClass: ResourcesLoaderService)]);
 
   if (isDebug) {
     print('Application in DebugMode');

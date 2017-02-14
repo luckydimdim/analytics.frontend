@@ -4,12 +4,12 @@ import 'package:angular2/router.dart';
 import 'dart:html';
 import 'package:resources_loader/resources_loader.dart';
 import 'package:chartjs/chartjs.dart';
-import 'package:master_layout/master_layout_component.dart';
+
 
 @Component(selector: 'analytics')
 @View(
     templateUrl: 'analytics_component.html',
-    directives: const [RouterLink, MasterLayoutComponent])
+    directives: const [RouterLink])
 class AnalyticsComponent implements OnInit {
   static const String route_name = 'Analytics';
   static const String route_path = 'analytics';
