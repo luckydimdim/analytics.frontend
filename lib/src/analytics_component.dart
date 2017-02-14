@@ -5,7 +5,6 @@ import 'dart:html';
 import 'package:resources_loader/resources_loader.dart';
 import 'package:chartjs/chartjs.dart';
 
-
 @Component(selector: 'analytics')
 @View(
     templateUrl: 'analytics_component.html',
